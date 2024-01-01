@@ -3,9 +3,11 @@ import Router from 'koa-router';
 import KoaStatic from 'koa-static';
 import koaBody from 'koa-body';
 import fs from 'fs';
+import cors from '@koa/cors';
 
 const app = new Koa();
 app.use(KoaStatic('public'))
+app.use(cors());
 
 const router = new Router()
 
@@ -22,7 +24,7 @@ router.post('/upload', koaBody({multipart: true}), async ctx => {
 
     const targetPath = `uploadedFile/${fileToUpload.originalFilename}`;
     await fs.copyFileSync(fileToUpload.filepath, `public/${targetPath}`)
-    ctx.body = `<a href="${targetPath}">View</a>`
+    ctx.body = `<a href="http://localhost:3000/${targetPath}">View</a>`
 })
 
 app.use(router.routes());

@@ -1,9 +1,10 @@
-TypeScript Koa Upload File Demo
+TypeScript Fetch Upload File Demo
 =============================
 
 ```
 npm install
-npm start
+npm run server
+npm run frontend
 ```
 
-Then open http://localhost:3000, and upload an image
+Then open the url from `frontend`, and upload an image
